@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mes sneakers</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#14181f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sneakers">
+<style>
+:root{--bg:#eef0ec;--card:#fff;--ink:#14181f;--mut:#69707d;--line:#d9dcd6;--tag:#2f5bff;--tagink:#fff;--danger:#c62828;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#14181f;--card:#1e242d;--ink:#eef0ec;--mut:#9aa3b0;--line:#2c3440;--tag:#6f8cff;--tagink:#0c1020;--danger:#ef6b6b;color-scheme:dark}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 "Avenir Next","Segoe UI",system-ui,sans-serif}
+:root{padding-top:env(safe-area-inset-top,0px)}
+main{max-width:640px;margin:0 auto;padding:12px 14px 110px}
+h1{font-size:26px;margin:8px 0 12px;font-weight:800;letter-spacing:-.02em}
+h2{font-size:18px;margin:18px 0 8px}
+button,input,select{font:inherit;color:inherit}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+button{border:0;border-radius:10px;padding:10px 14px;background:var(--ink);color:var(--bg);font-weight:600;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button.danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--tag);outline-offset:2px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;background:none;color:var(--mut);border-radius:0;padding:14px 4px;font-size:15px}
+nav button.on{color:var(--tag);box-shadow:inset 0 3px 0 var(--tag)}
+.row{display:flex;gap:8px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:14px;cursor:pointer;color:var(--ink)}
+.chip.on{border-color:var(--tag);box-shadow:0 0 0 2px var(--tag)}
+.dot{width:14px;height:14px;border-radius:50%;border:1px solid #8886;display:inline-block;flex:none}
+.item{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;margin:10px 0;cursor:pointer}
+.ph{width:84px;height:84px;border-radius:10px;background:var(--bg);object-fit:cover;flex:none;display:grid;place-items:center;color:var(--mut);font-size:12px}
+.info{flex:1;min-width:0}
+.info b{display:block;font-size:17px;overflow-wrap:anywhere}
+.sub{color:var(--mut);font-size:14px}
+.tag{background:var(--tag);color:var(--tagink);border-radius:8px;padding:3px 10px;font-weight:800;font-size:15px;display:inline-block;margin-top:6px}
+.bags{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.bag{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;cursor:pointer}
+.bag .n{font-size:44px;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--tag)}
+.empty{text-align:center;color:var(--mut);padding:30px 10px}
+.fab{position:fixed;right:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:var(--tag);color:var(--tagink);font-size:32px;padding:0;box-shadow:0 4px 14px #0004;z-index:4}
+.modal{position:fixed;inset:0;background:#000a;z-index:10;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);width:100%;max-width:640px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom,0px))}
+label{display:block;font-weight:600;margin:12px 0 4px;font-size:14px}
+.prev{width:100%;max-height:220px;object-fit:contain;border-radius:10px;margin-top:8px;background:var(--card)}
+.back{background:none;color:var(--tag);padding:6px 0;font-size:16px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<nav id="nav"></nav>
+<div id="modal"></div>
+<script>
+const COLORS={Noir:'#111',Blanc:'#fff',Gris:'#8a8a8a',Rouge:'#d32f2f',Bleu:'#1976d2',Vert:'#388e3c',Jaune:'#fbc02d',Orange:'#f57c00',Rose:'#ec407a',Violet:'#7b1fa2',Marron:'#6d4c41',Beige:'#d7c4a3',Multi:'conic-gradient(red,yellow,green,blue,red)'};
+let S={brands:['Nike','Adidas','Jordan','Vans','Yeezy'],bags:[],shoes:[]};
+let ui={tab:'search',q:'',brand:'',cols:[],bag:null};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+/* ---------- Stockage (IndexedDB, hors ligne, sur l'appareil) ---------- */
+const dbp=new Promise((res,rej)=>{const r=indexedDB.open('sneakers',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+async function load(){
+  try{const d=await dbp;const v=await new Promise(r=>{const q=d.transaction('kv').objectStore('kv').get('state');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)});if(v)S=v}catch(e){}
+  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+}
+async function save(){
+  try{const d=await dbp;d.transaction('kv','readwrite').objectStore('kv').put(S,'state')}
+  catch(e){alert("Enregistrement impossible sur cet appareil.")}
+}
+
+/* ---------- Rendu ---------- */
+function render(){
+  $('#nav').innerHTML=[['search','Recherche'],['bags','Sacs'],['brands','Réglages']].map(([k,t])=>`<button data-act="tab" data-v="${k}" class="${ui.tab===k?'on':''}">${t}</button>`).join('');
+  const a=$('#app');
+  if(ui.tab==='search')a.innerHTML=viewSearch();
+  else if(ui.tab==='bags')a.innerHTML=ui.bag===null?viewBags():viewBag();
+  else a.innerHTML=viewSettings();
+}
+function colorDots(cols){return (cols||[]).map(c=>`<span class="chip" style="cursor:default;padding:3px 9px"><i class="dot" style="background:${COLORS[c]||'#999'}"></i>${esc(c)}</span>`).join('')}
+function card(s,del){
+  const img=s.photo?`<img class="ph" src="${s.photo}" alt="">`:`<div class="ph">Pas de photo</div>`;
+  return `<div class="item" data-act="edit" data-id="${s.id}">${img}<div class="info"><b>${esc(s.name)}</b><span class="sub">${esc(s.brand)}</span><div class="chips" style="margin:4px 0 0">${colorDots(s.colors)}</div><span class="tag">Sac ${esc(s.bag)}</span></div></div>`;
+}
+function viewSearch(){
+  const toks=norm(ui.q).split(/\s+/).filter(Boolean);
+  const list=S.shoes.filter(s=>{
+    const hay=norm([s.name,s.brand,...s.colors].join(' '));
+    return toks.every(t=>hay.includes(t))&&(!ui.brand||s.brand===ui.brand)&&ui.cols.every(c=>s.colors.includes(c));
+  }).sort((a,b)=>a.name.localeCompare(b.name));
+  return `<h1>Où est ma paire ?</h1>
+  <input id="q" type="search" placeholder="Nom, modèle, marque ou couleur" value="${esc(ui.q)}" autocomplete="off">
+  <select id="bf" style="margin-top:8px"><option value="">Toutes les marques</option>${S.brands.map(b=>`<option ${ui.brand===b?'selected':''}>${esc(b)}</option>`).join('')}</select>
+  <div class="chips">${Object.keys(COLORS).map(c=>`<span class="chip ${ui.cols.includes(c)?'on':''}" data-act="fcol" data-v="${c}"><i class="dot" style="background:${COLORS[c]}"></i>${c}</span>`).join('')}</div>
+  <div class="sub">${list.length} paire${list.length>1?'s':''} sur ${S.shoes.length}</div>
+  ${list.map(card).join('')||`<div class="empty">${S.shoes.length?'Aucune paire ne correspond. Essaie moins de filtres.':'Aucune paire pour l’instant. Crée un sac dans l’onglet Sacs, puis ajoute ta première paire.'}</div>`}
+  <button class="fab" data-act="add" aria-label="Ajouter une paire">+</button>`;
+}
+function viewBags(){
+  const bags=[...S.bags].sort((a,b)=>a-b);
+  return `<h1>Mes sacs</h1><button data-act="newbag">Ajouter un sac</button>
+  <div class="bags" style="margin-top:12px">${bags.map(n=>{const c=S.shoes.filter(s=>s.bag===n).length;return `<div class="bag" data-act="openbag" data-v="${n}"><div class="n">${n}</div><div class="sub">${c} paire${c>1?'s':''}</div></div>`}).join('')}</div>
+  ${bags.length?'':'<div class="empty">Aucun sac. Ajoute ton premier sac pour commencer.</div>'}`;
+}
+function viewBag(){
+  const n=ui.bag,list=S.shoes.filter(s=>s.bag===n);
+  return `<button class="back" data-act="closebag">‹ Tous les sacs</button><h1>Sac ${n}</h1>
+  <div class="row"><button data-act="add" style="flex:1">Ajouter une paire</button><button class="danger" data-act="delbag">Supprimer le sac</button></div>
+  ${list.map(card).join('')||'<div class="empty">Ce sac est vide.</div>'}`;
+}
+function viewSettings(){
+  return `<h1>Réglages</h1><h2>Marques</h2>
+  <div class="row"><input id="nb" placeholder="Nouvelle marque"><button data-act="addbrand">Ajouter</button></div>
+  <div class="chips">${S.brands.map(b=>`<span class="chip">${esc(b)} <b data-act="delbrand" data-v="${esc(b)}" style="color:var(--danger);padding:0 2px" role="button" aria-label="Supprimer ${esc(b)}">✕</b></span>`).join('')}</div>
+  <h2>Sauvegarde</h2>
+  <p class="sub">Tes données restent sur cet appareil. Exporte-les pour garder une copie ou les passer sur un autre téléphone.</p>
+  <div class="row"><button class="ghost" data-act="export" style="flex:1">Exporter</button><button class="ghost" data-act="import" style="flex:1">Importer</button></div>
+  <input type="file" id="imp" accept="application/json" hidden>`;
+}
+
+/* ---------- Formulaire paire ---------- */
+let draft=null;
+function openForm(id,bag){
+  const s=id?S.shoes.find(x=>x.id===id):null;
+  if(!s&&!S.bags.length){alert("Crée d’abord un sac dans l’onglet Sacs.");return}
+  draft=s?{...s,colors:[...s.colors]}:{id:null,name:'',brand:S.brands[0]||'',colors:[],bag:bag??[...S.bags].sort((a,b)=>a-b)[0],photo:''};
+  drawForm(!!s);
+}
+function drawForm(edit){
+  const bags=[...S.bags].sort((a,b)=>a-b);
+  $('#modal').innerHTML=`<div class="modal" data-act="shade"><div class="sheet">
+  <h1>${edit?'Modifier la paire':'Nouvelle paire'}</h1>
+  <label for="f-name">Nom ou modèle</label><input id="f-name" value="${esc(draft.name)}" placeholder="Ex. Air Max 90">
+  <label for="f-brand">Marque</label><select id="f-brand">${S.brands.map(b=>`<option ${draft.brand===b?'selected':''}>${esc(b)}</option>`).join('')}</select>
+  <label>Couleurs</label><div class="chips">${Object.keys(COLORS).map(c=>`<span class="chip ${draft.colors.includes(c)?'on':''}" data-act="tcol" data-v="${c}"><i class="dot" style="background:${COLORS[c]}"></i>${c}</span>`).join('')}</div>
+  <label for="f-bag">Sac</label><select id="f-bag">${bags.map(b=>`<option ${draft.bag===b?'selected':''}>${b}</option>`).join('')}</select>
+  <label for="f-photo">Photo</label><input id="f-photo" type="file" accept="image/*">
+  ${draft.photo?`<img class="prev" src="${draft.photo}" alt="Aperçu"><button class="ghost" data-act="rmphoto" style="margin-top:6px">Retirer la photo</button>`:''}
+  <div class="row" style="margin-top:18px"><button data-act="saveshoe" style="flex:1">Enregistrer</button><button class="ghost" data-act="close">Annuler</button></div>
+  ${edit?'<button class="danger" data-act="delshoe" style="width:100%;margin-top:10px">Supprimer cette paire</button>':''}
+  </div></div>`;
+}
+function keepFields(){
+  const n=$('#f-name');if(!n)return;
+  draft.name=n.value;draft.brand=$('#f-brand').value;draft.bag=Number($('#f-bag').value);
+}
+function resize(file){
+  return new Promise((res,rej)=>{
+    const img=new Image(),u=URL.createObjectURL(file);
+    img.onload=()=>{const m=720,k=Math.min(1,m/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.8))};
+    img.onerror=()=>rej();img.src=u;
+  });
+}
+
+/* ---------- Actions ---------- */
+document.addEventListener('click',async e=>{
+  const t=e.target.closest('[data-act]');if(!t)return;
+  const act=t.dataset.act,v=t.dataset.v,id=t.dataset.id;
+  if(act==='shade'){if(e.target===t)closeModal();return}
+  if(act==='tab'){ui.tab=v;ui.bag=null;render()}
+  else if(act==='fcol'){ui.cols=ui.cols.includes(v)?ui.cols.filter(c=>c!==v):[...ui.cols,v];render()}
+  else if(act==='add')openForm(null,ui.tab==='bags'?ui.bag:undefined);
+  else if(act==='edit')openForm(id);
+  else if(act==='tcol'){keepFields();draft.colors=draft.colors.includes(v)?draft.colors.filter(c=>c!==v):[...draft.colors,v];drawForm(!!draft.id)}
+  else if(act==='rmphoto'){keepFields();draft.photo='';drawForm(!!draft.id)}
+  else if(act==='close')closeModal();
+  else if(act==='saveshoe'){
+    keepFields();
+    if(!draft.name.trim()){alert("Donne un nom à la paire.");return}
+    if(draft.id){S.shoes=S.shoes.map(s=>s.id===draft.id?{...draft,name:draft.name.trim()}:s)}
+    else S.shoes.push({...draft,id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:draft.name.trim()});
+    await save();closeModal();render();
+  }
+  else if(act==='delshoe'){if(confirm('Supprimer la paire « '+draft.name+' » ?')){S.shoes=S.shoes.filter(s=>s.id!==draft.id);await save();closeModal();render()}}
+  else if(act==='newbag'){
+    const next=S.bags.length?Math.max(...S.bags)+1:1;
+    const n=Number(prompt('Numéro du sac',next));
+    if(!n||n<1||!Number.isInteger(n))return;
+    if(S.bags.includes(n)){alert('Le sac '+n+' existe déjà.');return}
+    S.bags.push(n);await save();render();
+  }
+  else if(act==='openbag'){ui.bag=Number(v);render();scrollTo(0,0)}
+  else if(act==='closebag'){ui.bag=null;render()}
+  else if(act==='delbag'){
+    const c=S.shoes.filter(s=>s.bag===ui.bag).length;
+    if(confirm('Supprimer le sac '+ui.bag+(c?' et ses '+c+' paire(s)':'')+' ?')){S.shoes=S.shoes.filter(s=>s.bag!==ui.bag);S.bags=S.bags.filter(b=>b!==ui.bag);ui.bag=null;await save();render()}
+  }
+  else if(act==='addbrand'){
+    const n=$('#nb').value.trim();if(!n)return;
+    if(S.brands.some(b=>norm(b)===norm(n))){alert('Cette marque existe déjà.');return}
+    S.brands.push(n);await save();render();
+  }
+  else if(act==='delbrand'){
+    const used=S.shoes.filter(s=>s.brand===v).length;
+    if(used){alert(used+' paire(s) utilisent « '+v+' ». Change leur marque avant de la supprimer.');return}
+    if(confirm('Supprimer la marque « '+v+' » ?')){S.brands=S.brands.filter(b=>b!==v);await save();render()}
+  }
+  else if(act==='export'){
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));
+    a.download='sneakers-sauvegarde.json';a.click();
+  }
+  else if(act==='import')$('#imp').click();
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='q'){ui.q=e.target.value;const p=e.target.selectionStart;render();const q=$('#q');q.focus();q.setSelectionRange(p,p)}
+});
+document.addEventListener('change',async e=>{
+  if(e.target.id==='bf'){ui.brand=e.target.value;render()}
+  else if(e.target.id==='f-photo'&&e.target.files[0]){
+    keepFields();
+    try{draft.photo=await resize(e.target.files[0])}catch(x){alert('Photo illisible.')}
+    drawForm(!!draft.id);
+  }
+  else if(e.target.id==='imp'&&e.target.files[0]){
+    try{
+      const d=JSON.parse(await e.target.files[0].text());
+      if(!Array.isArray(d.shoes)||!Array.isArray(d.bags)||!Array.isArray(d.brands))throw 0;
+      if(confirm('Remplacer toutes les données actuelles par cette sauvegarde ?')){S=d;await save();render()}
+    }catch(x){alert('Fichier de sauvegarde invalide.')}
+    e.target.value='';
+  }
+});
+function closeModal(){$('#modal').innerHTML='';draft=null}
+
+load().then(render);
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
