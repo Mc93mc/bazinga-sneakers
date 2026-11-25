@@ -58,7 +58,91 @@ label{display:block;font-weight:600;margin:12px 0 4px;font-size:14px}
 <div id="modal"></div>
 <script>
 const COLORS={Noir:'#111',Blanc:'#fff',Gris:'#8a8a8a',Rouge:'#d32f2f',Bleu:'#1976d2',Vert:'#388e3c',Jaune:'#fbc02d',Orange:'#f57c00',Rose:'#ec407a',Violet:'#7b1fa2',Marron:'#6d4c41',Beige:'#d7c4a3',Multi:'conic-gradient(red,yellow,green,blue,red)'};
-let S={brands:['Nike','Adidas','Jordan','Vans','Yeezy'],bags:[],shoes:[]};
+let S={brands:['Nike','Adidas','Jordan','Vans','Yeezy','Diadora'],bags:[1,2,3,4,5,6,7,8,9,10],shoes:SEED_SHOES()};
+function SEED_SHOES(){return `1|Air Jordan 1 Low Travis Scott Reverse Mocha (DM7866-162)|Jordan|Beige,Rouge,Marron
+1|SB Dunk Low Mummy (DM0774-111)|Nike|Beige,Vert,Jaune
+1|Dunk|Nike|Beige
+1|Air Jordan 1 Low Travis Scott Olive femme (DZ4137-106)|Jordan|Beige,Noir,Vert,Rouge
+2|Dunk Low Chenille Swoosh (DQ7683-100)|Nike|Beige,Violet,Vert
+2|Dunk Low Pink Oxford femme (DD1503-601)|Nike|Rose,Violet
+2|DV6482-100|Nike|
+2|DV6486-100|Nike|
+2|DQ5015-063|Nike|
+2|DV3206-001|Nike|
+2|DR0159-200|Nike|
+2|FJ4742-100|Nike|
+2|FD9756-001|Nike|
+3|DR4876-100|Nike|
+3|DV3497-001|Nike|
+3|DV0821-100|Nike|
+3|FD8777-100|Nike|
+3|DZ2536-600|Nike|
+3|FN5880-001|Nike|
+3|DD3357-100|Nike|
+3|DV0821-200|Nike|
+3|CZ0775-104|Nike|
+4|DV1309-100|Nike|
+4|DC0774-007|Nike|
+4|DV1299-104|Nike|
+4|DR0502-600|Nike|
+4|DC0774-131|Nike|
+4|DR0502-101|Nike|
+4|DD9315-114|Nike|
+4|DC0774-416|Nike|
+5|DM1206-201|Nike|
+5|GX1488|Adidas|
+5|HO5143|Adidas||2
+5|Era Horror Pack It Pennywise (VN0A4U39ZPM)|Vans|Noir,Blanc,Rouge
+5|GZ2009|Adidas|
+5|HV2526-001|Nike|
+5|VN0A54F14FK|Vans|
+5|Era|Vans|Noir,Jaune
+5|IF9735|Adidas|
+5|BB5350|Adidas|
+6|GZ9177|Adidas|
+6|Legacy 312 Low|Jordan|Blanc,Rouge
+6|SB Blazer Low GT|Nike|Orange
+6|Lowland CC|Vans|Blanc
+6|Lowland CC Bob l'éponge|Vans|Blanc
+6|CV5980-700|Nike|
+6|GZ4378|Adidas|
+6|Forum Low|Adidas|Blanc,Bleu
+6|Forum Low|Adidas|Blanc,Noir
+6|Forum Low|Adidas|Blanc
+6|Forum Low|Adidas|Blanc,Rouge
+6|Air Force|Nike|Blanc
+7|FQ8172-645|Nike|
+7|HF2903-100|Nike|
+7|DV1407-100|Nike|
+7|DX8436-103|Nike|
+7|DJ9568-001|Nike|
+7|CP9654|Adidas|
+7|Yeezy 350|Adidas|Blanc
+7|Yeezy 350|Adidas|Noir
+7|Knu Skool|Vans|Gris,Vert
+7|DZ4137-700|Jordan|
+7|FN3727-100|Nike|
+8|S42624|Adidas||12
+9|MD Runner|Nike|Bleu
+9|MD Runner|Nike|Blanc
+9|Waffle One|Nike|Beige,Vert,Noir
+9|Waffle One|Nike|Beige,Orange,Bleu
+9|Team Court|Adidas|Blanc,Orange|2
+9|Rivalry Low|Adidas|Noir
+9|Stan Smith|Adidas|Vert
+9|Stan Smith|Adidas|Bleu
+9|Stan Smith|Adidas|Vert
+9|554723-401|Nike|
+10|Blazer|Nike|Blanc,Rouge,Bleu
+10|Superstar|Adidas|Blanc,Noir,Rose,Jaune
+10|Superstar|Adidas|Noir
+10|Superstar|Adidas|Blanc
+10|Trail|Adidas|Noir
+10|Continental 80 Stripes|Adidas|Blanc,Rouge
+10|GameLow Waxed|Diadora|Blanc,Vert
+10|GameLow Waxed|Diadora|Blanc,Bleu
+10|GameLow Waxed|Diadora|Blanc,Rouge
+10|GameLow Waxed|Diadora|Blanc,Noir`.split('\n').flatMap((l,i)=>{const[b,n,br,c,q]=l.split('|');return Array.from({length:+q||1},(_,k)=>({id:'i'+i+'_'+k,bag:+b,name:n,brand:br,colors:c?c.split(','):[],photo:''}))})}
 let ui={tab:'search',q:'',brand:'',cols:[],bag:null};
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
