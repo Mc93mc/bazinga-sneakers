@@ -1,0 +1,914 @@
+{
+ "brands": [
+  "Nike",
+  "Adidas",
+  "Jordan",
+  "Vans",
+  "Yeezy",
+  "Diadora"
+ ],
+ "bags": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "shoes": [
+  {
+   "id": "i0_0",
+   "bag": 1,
+   "name": "Air Jordan 1 Low Travis Scott Reverse Mocha (DM7866-162)",
+   "brand": "Jordan",
+   "colors": [
+    "Beige",
+    "Rouge",
+    "Marron"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i1_0",
+   "bag": 1,
+   "name": "SB Dunk Low Mummy (DM0774-111)",
+   "brand": "Nike",
+   "colors": [
+    "Beige",
+    "Vert",
+    "Jaune"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i2_0",
+   "bag": 1,
+   "name": "Dunk",
+   "brand": "Nike",
+   "colors": [
+    "Beige"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i3_0",
+   "bag": 1,
+   "name": "Air Jordan 1 Low Travis Scott Olive femme (DZ4137-106)",
+   "brand": "Jordan",
+   "colors": [
+    "Beige",
+    "Noir",
+    "Vert",
+    "Rouge"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i4_0",
+   "bag": 2,
+   "name": "Dunk Low Chenille Swoosh (DQ7683-100)",
+   "brand": "Nike",
+   "colors": [
+    "Beige",
+    "Violet",
+    "Vert"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i5_0",
+   "bag": 2,
+   "name": "Dunk Low Pink Oxford femme (DD1503-601)",
+   "brand": "Nike",
+   "colors": [
+    "Rose",
+    "Violet"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i6_0",
+   "bag": 2,
+   "name": "DV6482-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i7_0",
+   "bag": 2,
+   "name": "DV6486-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i8_0",
+   "bag": 2,
+   "name": "DQ5015-063",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i9_0",
+   "bag": 2,
+   "name": "DV3206-001",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i10_0",
+   "bag": 2,
+   "name": "DR0159-200",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i11_0",
+   "bag": 2,
+   "name": "FJ4742-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i12_0",
+   "bag": 2,
+   "name": "FD9756-001",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i13_0",
+   "bag": 3,
+   "name": "DR4876-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i14_0",
+   "bag": 3,
+   "name": "DV3497-001",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i15_0",
+   "bag": 3,
+   "name": "DV0821-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i16_0",
+   "bag": 3,
+   "name": "FD8777-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i17_0",
+   "bag": 3,
+   "name": "DZ2536-600",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i18_0",
+   "bag": 3,
+   "name": "FN5880-001",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i19_0",
+   "bag": 3,
+   "name": "DD3357-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i20_0",
+   "bag": 3,
+   "name": "DV0821-200",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i21_0",
+   "bag": 3,
+   "name": "CZ0775-104",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i22_0",
+   "bag": 4,
+   "name": "DV1309-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i23_0",
+   "bag": 4,
+   "name": "DC0774-007",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i24_0",
+   "bag": 4,
+   "name": "DV1299-104",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i25_0",
+   "bag": 4,
+   "name": "DR0502-600",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i26_0",
+   "bag": 4,
+   "name": "DC0774-131",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i27_0",
+   "bag": 4,
+   "name": "DR0502-101",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i28_0",
+   "bag": 4,
+   "name": "DD9315-114",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i29_0",
+   "bag": 4,
+   "name": "DC0774-416",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i30_0",
+   "bag": 5,
+   "name": "DM1206-201",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i31_0",
+   "bag": 5,
+   "name": "GX1488",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i32_0",
+   "bag": 5,
+   "name": "HO5143",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i32_1",
+   "bag": 5,
+   "name": "HO5143",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i33_0",
+   "bag": 5,
+   "name": "Era Horror Pack It Pennywise (VN0A4U39ZPM)",
+   "brand": "Vans",
+   "colors": [
+    "Noir",
+    "Blanc",
+    "Rouge"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i34_0",
+   "bag": 5,
+   "name": "GZ2009",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i35_0",
+   "bag": 5,
+   "name": "HV2526-001",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i36_0",
+   "bag": 5,
+   "name": "VN0A54F14FK",
+   "brand": "Vans",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i37_0",
+   "bag": 5,
+   "name": "Era",
+   "brand": "Vans",
+   "colors": [
+    "Noir",
+    "Jaune"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i38_0",
+   "bag": 5,
+   "name": "IF9735",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i39_0",
+   "bag": 5,
+   "name": "BB5350",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i40_0",
+   "bag": 6,
+   "name": "GZ9177",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i41_0",
+   "bag": 6,
+   "name": "Legacy 312 Low",
+   "brand": "Jordan",
+   "colors": [
+    "Blanc",
+    "Rouge"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i42_0",
+   "bag": 6,
+   "name": "SB Blazer Low GT",
+   "brand": "Nike",
+   "colors": [
+    "Orange"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i43_0",
+   "bag": 6,
+   "name": "Lowland CC",
+   "brand": "Vans",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i44_0",
+   "bag": 6,
+   "name": "Lowland CC Bob l'éponge",
+   "brand": "Vans",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i45_0",
+   "bag": 6,
+   "name": "CV5980-700",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i46_0",
+   "bag": 6,
+   "name": "GZ4378",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i47_0",
+   "bag": 6,
+   "name": "Forum Low",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Bleu"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i48_0",
+   "bag": 6,
+   "name": "Forum Low",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Noir"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i49_0",
+   "bag": 6,
+   "name": "Forum Low",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i50_0",
+   "bag": 6,
+   "name": "Forum Low",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Rouge"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i51_0",
+   "bag": 6,
+   "name": "Air Force",
+   "brand": "Nike",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i52_0",
+   "bag": 7,
+   "name": "FQ8172-645",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i53_0",
+   "bag": 7,
+   "name": "HF2903-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i54_0",
+   "bag": 7,
+   "name": "DV1407-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i55_0",
+   "bag": 7,
+   "name": "DX8436-103",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i56_0",
+   "bag": 7,
+   "name": "DJ9568-001",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i57_0",
+   "bag": 7,
+   "name": "CP9654",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i58_0",
+   "bag": 7,
+   "name": "Yeezy 350",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i59_0",
+   "bag": 7,
+   "name": "Yeezy 350",
+   "brand": "Adidas",
+   "colors": [
+    "Noir"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i60_0",
+   "bag": 7,
+   "name": "Knu Skool",
+   "brand": "Vans",
+   "colors": [
+    "Gris",
+    "Vert"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i61_0",
+   "bag": 7,
+   "name": "DZ4137-700",
+   "brand": "Jordan",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i62_0",
+   "bag": 7,
+   "name": "FN3727-100",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_0",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_1",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_2",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_3",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_4",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_5",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_6",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_7",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_8",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_9",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_10",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i63_11",
+   "bag": 8,
+   "name": "S42624",
+   "brand": "Adidas",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i64_0",
+   "bag": 9,
+   "name": "MD Runner",
+   "brand": "Nike",
+   "colors": [
+    "Bleu"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i65_0",
+   "bag": 9,
+   "name": "MD Runner",
+   "brand": "Nike",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i66_0",
+   "bag": 9,
+   "name": "Waffle One",
+   "brand": "Nike",
+   "colors": [
+    "Beige",
+    "Vert",
+    "Noir"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i67_0",
+   "bag": 9,
+   "name": "Waffle One",
+   "brand": "Nike",
+   "colors": [
+    "Beige",
+    "Orange",
+    "Bleu"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i68_0",
+   "bag": 9,
+   "name": "Team Court",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Orange"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i68_1",
+   "bag": 9,
+   "name": "Team Court",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Orange"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i69_0",
+   "bag": 9,
+   "name": "Rivalry Low",
+   "brand": "Adidas",
+   "colors": [
+    "Noir"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i70_0",
+   "bag": 9,
+   "name": "Stan Smith",
+   "brand": "Adidas",
+   "colors": [
+    "Vert"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i71_0",
+   "bag": 9,
+   "name": "Stan Smith",
+   "brand": "Adidas",
+   "colors": [
+    "Bleu"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i72_0",
+   "bag": 9,
+   "name": "Stan Smith",
+   "brand": "Adidas",
+   "colors": [
+    "Vert"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i73_0",
+   "bag": 9,
+   "name": "554723-401",
+   "brand": "Nike",
+   "colors": [],
+   "photo": ""
+  },
+  {
+   "id": "i74_0",
+   "bag": 10,
+   "name": "Blazer",
+   "brand": "Nike",
+   "colors": [
+    "Blanc",
+    "Rouge",
+    "Bleu"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i75_0",
+   "bag": 10,
+   "name": "Superstar",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Noir",
+    "Rose",
+    "Jaune"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i76_0",
+   "bag": 10,
+   "name": "Superstar",
+   "brand": "Adidas",
+   "colors": [
+    "Noir"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i77_0",
+   "bag": 10,
+   "name": "Superstar",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i78_0",
+   "bag": 10,
+   "name": "Trail",
+   "brand": "Adidas",
+   "colors": [
+    "Noir"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i79_0",
+   "bag": 10,
+   "name": "Continental 80 Stripes",
+   "brand": "Adidas",
+   "colors": [
+    "Blanc",
+    "Rouge"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i80_0",
+   "bag": 10,
+   "name": "GameLow Waxed",
+   "brand": "Diadora",
+   "colors": [
+    "Blanc",
+    "Vert"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i81_0",
+   "bag": 10,
+   "name": "GameLow Waxed",
+   "brand": "Diadora",
+   "colors": [
+    "Blanc",
+    "Bleu"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i82_0",
+   "bag": 10,
+   "name": "GameLow Waxed",
+   "brand": "Diadora",
+   "colors": [
+    "Blanc",
+    "Rouge"
+   ],
+   "photo": ""
+  },
+  {
+   "id": "i83_0",
+   "bag": 10,
+   "name": "GameLow Waxed",
+   "brand": "Diadora",
+   "colors": [
+    "Blanc",
+    "Noir"
+   ],
+   "photo": ""
+  }
+ ]
+}
