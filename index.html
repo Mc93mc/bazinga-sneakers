@@ -43,6 +43,7 @@ nav button.on{color:var(--tag);box-shadow:inset 0 3px 0 var(--tag)}
 .bags{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .bag{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px;cursor:pointer}
 .bag .n{font-size:44px;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--tag)}
+.bag .n.t{font-size:24px;line-height:1.2;overflow-wrap:anywhere}
 .empty{text-align:center;color:var(--mut);padding:30px 10px}
 .fab{position:fixed;right:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:var(--tag);color:var(--tagink);font-size:32px;padding:0;box-shadow:0 4px 14px #0004;z-index:4}
 .modal{position:fixed;inset:0;background:#000a;z-index:10;display:flex;align-items:flex-end;justify-content:center}
@@ -58,100 +59,24 @@ label{display:block;font-weight:600;margin:12px 0 4px;font-size:14px}
 <div id="modal"></div>
 <script>
 const COLORS={Noir:'#111',Blanc:'#fff',Gris:'#8a8a8a',Rouge:'#d32f2f',Bleu:'#1976d2',Vert:'#388e3c',Jaune:'#fbc02d',Orange:'#f57c00',Rose:'#ec407a',Violet:'#7b1fa2',Marron:'#6d4c41',Beige:'#d7c4a3',Multi:'conic-gradient(red,yellow,green,blue,red)'};
-let S={brands:['Nike','Adidas','Jordan','Vans','Yeezy','Diadora'],bags:[1,2,3,4,5,6,7,8,9,10],shoes:SEED_SHOES()};
-function SEED_SHOES(){return `1|Air Jordan 1 Low Travis Scott Reverse Mocha (DM7866-162)|Jordan|Beige,Rouge,Marron
-1|SB Dunk Low Mummy (DM0774-111)|Nike|Beige,Vert,Jaune
-1|Dunk|Nike|Beige
-1|Air Jordan 1 Low Travis Scott Olive femme (DZ4137-106)|Jordan|Beige,Noir,Vert,Rouge
-2|Dunk Low Chenille Swoosh (DQ7683-100)|Nike|Beige,Violet,Vert
-2|Dunk Low Pink Oxford femme (DD1503-601)|Nike|Rose,Violet
-2|DV6482-100|Nike|
-2|DV6486-100|Nike|
-2|DQ5015-063|Nike|
-2|DV3206-001|Nike|
-2|DR0159-200|Nike|
-2|FJ4742-100|Nike|
-2|FD9756-001|Nike|
-3|DR4876-100|Nike|
-3|DV3497-001|Nike|
-3|DV0821-100|Nike|
-3|FD8777-100|Nike|
-3|DZ2536-600|Nike|
-3|FN5880-001|Nike|
-3|DD3357-100|Nike|
-3|DV0821-200|Nike|
-3|CZ0775-104|Nike|
-4|DV1309-100|Nike|
-4|DC0774-007|Nike|
-4|DV1299-104|Nike|
-4|DR0502-600|Nike|
-4|DC0774-131|Nike|
-4|DR0502-101|Nike|
-4|DD9315-114|Nike|
-4|DC0774-416|Nike|
-5|DM1206-201|Nike|
-5|GX1488|Adidas|
-5|HO5143|Adidas||2
-5|Era Horror Pack It Pennywise (VN0A4U39ZPM)|Vans|Noir,Blanc,Rouge
-5|GZ2009|Adidas|
-5|HV2526-001|Nike|
-5|VN0A54F14FK|Vans|
-5|Era|Vans|Noir,Jaune
-5|IF9735|Adidas|
-5|BB5350|Adidas|
-6|GZ9177|Adidas|
-6|Legacy 312 Low|Jordan|Blanc,Rouge
-6|SB Blazer Low GT|Nike|Orange
-6|Lowland CC|Vans|Blanc
-6|Lowland CC Bob l'éponge|Vans|Blanc
-6|CV5980-700|Nike|
-6|GZ4378|Adidas|
-6|Forum Low|Adidas|Blanc,Bleu
-6|Forum Low|Adidas|Blanc,Noir
-6|Forum Low|Adidas|Blanc
-6|Forum Low|Adidas|Blanc,Rouge
-6|Air Force|Nike|Blanc
-7|FQ8172-645|Nike|
-7|HF2903-100|Nike|
-7|DV1407-100|Nike|
-7|DX8436-103|Nike|
-7|DJ9568-001|Nike|
-7|CP9654|Adidas|
-7|Yeezy 350|Adidas|Blanc
-7|Yeezy 350|Adidas|Noir
-7|Knu Skool|Vans|Gris,Vert
-7|DZ4137-700|Jordan|
-7|FN3727-100|Nike|
-8|S42624|Adidas||12
-9|MD Runner|Nike|Bleu
-9|MD Runner|Nike|Blanc
-9|Waffle One|Nike|Beige,Vert,Noir
-9|Waffle One|Nike|Beige,Orange,Bleu
-9|Team Court|Adidas|Blanc,Orange|2
-9|Rivalry Low|Adidas|Noir
-9|Stan Smith|Adidas|Vert
-9|Stan Smith|Adidas|Bleu
-9|Stan Smith|Adidas|Vert
-9|554723-401|Nike|
-10|Blazer|Nike|Blanc,Rouge,Bleu
-10|Superstar|Adidas|Blanc,Noir,Rose,Jaune
-10|Superstar|Adidas|Noir
-10|Superstar|Adidas|Blanc
-10|Trail|Adidas|Noir
-10|Continental 80 Stripes|Adidas|Blanc,Rouge
-10|GameLow Waxed|Diadora|Blanc,Vert
-10|GameLow Waxed|Diadora|Blanc,Bleu
-10|GameLow Waxed|Diadora|Blanc,Rouge
-10|GameLow Waxed|Diadora|Blanc,Noir`.split('\n').flatMap((l,i)=>{const[b,n,br,c,q]=l.split('|');return Array.from({length:+q||1},(_,k)=>({id:'i'+i+'_'+k,bag:+b,name:n,brand:br,colors:c?c.split(','):[],photo:''}))})}
+let S={brands:['Nike','Adidas','Jordan','Vans','Yeezy','Diadora'],bags:[1,2,3,4,5,6,7,8,9,10],shoes:[]};
 let ui={tab:'search',q:'',brand:'',cols:[],bag:null};
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bagLabel=b=>typeof b==='number'?'Sac '+b:b;
+const parseBag=v=>/^\d+$/.test(String(v).trim())?Number(v):String(v).trim();
+const sortBags=a=>[...a].sort((x,y)=>typeof x==='number'&&typeof y==='number'?x-y:typeof x==='number'?-1:typeof y==='number'?1:x.localeCompare(y));
 const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 
 /* ---------- Stockage (IndexedDB, hors ligne, sur l'appareil) ---------- */
 const dbp=new Promise((res,rej)=>{const r=indexedDB.open('sneakers',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+async function fromFile(){
+  const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)throw 0;
+  const d=await r.json();if(!Array.isArray(d.shoes)||!Array.isArray(d.bags)||!Array.isArray(d.brands))throw 0;
+  return d;
+}
 async function load(){
-  try{const d=await dbp;const v=await new Promise(r=>{const q=d.transaction('kv').objectStore('kv').get('state');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)});if(v)S=v}catch(e){}
+  try{const d=await dbp;const v=await new Promise(r=>{const q=d.transaction('kv').objectStore('kv').get('state');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)});if(v)S=v;else{S=await fromFile();save()}}catch(e){}
   try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 }
 async function save(){
@@ -170,12 +95,12 @@ function render(){
 function colorDots(cols){return (cols||[]).map(c=>`<span class="chip" style="cursor:default;padding:3px 9px"><i class="dot" style="background:${COLORS[c]||'#999'}"></i>${esc(c)}</span>`).join('')}
 function card(s,del){
   const img=s.photo?`<img class="ph" src="${s.photo}" alt="">`:`<div class="ph">Pas de photo</div>`;
-  return `<div class="item" data-act="edit" data-id="${s.id}">${img}<div class="info"><b>${esc(s.name)}</b><span class="sub">${esc(s.brand)}</span><div class="chips" style="margin:4px 0 0">${colorDots(s.colors)}</div><span class="tag">Sac ${esc(s.bag)}</span></div></div>`;
+  return `<div class="item" data-act="edit" data-id="${s.id}">${img}<div class="info"><b>${esc(s.name)}</b><span class="sub">${esc(s.brand)}</span><div class="chips" style="margin:4px 0 0">${colorDots(s.colors)}</div><span class="tag">${esc(bagLabel(s.bag))}</span></div></div>`;
 }
 function viewSearch(){
   const toks=norm(ui.q).split(/\s+/).filter(Boolean);
   const list=S.shoes.filter(s=>{
-    const hay=norm([s.name,s.brand,...s.colors].join(' '));
+    const hay=norm([s.name,s.brand,...s.colors,typeof s.bag==='string'?s.bag:''].join(' '));
     return toks.every(t=>hay.includes(t))&&(!ui.brand||s.brand===ui.brand)&&ui.cols.every(c=>s.colors.includes(c));
   }).sort((a,b)=>a.name.localeCompare(b.name));
   return `<h1>Où est ma paire ?</h1>
@@ -187,14 +112,14 @@ function viewSearch(){
   <button class="fab" data-act="add" aria-label="Ajouter une paire">+</button>`;
 }
 function viewBags(){
-  const bags=[...S.bags].sort((a,b)=>a-b);
-  return `<h1>Mes sacs</h1><button data-act="newbag">Ajouter un sac</button>
-  <div class="bags" style="margin-top:12px">${bags.map(n=>{const c=S.shoes.filter(s=>s.bag===n).length;return `<div class="bag" data-act="openbag" data-v="${n}"><div class="n">${n}</div><div class="sub">${c} paire${c>1?'s':''}</div></div>`}).join('')}</div>
+  const bags=sortBags(S.bags);
+  return `<h1>Mes sacs</h1><button data-act="newbag">Ajouter un sac ou un lot</button>
+  <div class="bags" style="margin-top:12px">${bags.map(n=>{const c=S.shoes.filter(s=>s.bag===n).length;return `<div class="bag" data-act="openbag" data-v="${esc(n)}"><div class="n${typeof n==='number'?'':' t'}">${esc(n)}</div><div class="sub">${c} paire${c>1?'s':''}</div></div>`}).join('')}</div>
   ${bags.length?'':'<div class="empty">Aucun sac. Ajoute ton premier sac pour commencer.</div>'}`;
 }
 function viewBag(){
   const n=ui.bag,list=S.shoes.filter(s=>s.bag===n);
-  return `<button class="back" data-act="closebag">‹ Tous les sacs</button><h1>Sac ${n}</h1>
+  return `<button class="back" data-act="closebag">‹ Tous les sacs</button><h1>${esc(bagLabel(n))}</h1>
   <div class="row"><button data-act="add" style="flex:1">Ajouter une paire</button><button class="danger" data-act="delbag">Supprimer le sac</button></div>
   ${list.map(card).join('')||'<div class="empty">Ce sac est vide.</div>'}`;
 }
@@ -203,8 +128,9 @@ function viewSettings(){
   <div class="row"><input id="nb" placeholder="Nouvelle marque"><button data-act="addbrand">Ajouter</button></div>
   <div class="chips">${S.brands.map(b=>`<span class="chip">${esc(b)} <b data-act="delbrand" data-v="${esc(b)}" style="color:var(--danger);padding:0 2px" role="button" aria-label="Supprimer ${esc(b)}">✕</b></span>`).join('')}</div>
   <h2>Sauvegarde</h2>
-  <p class="sub">Tes données restent sur cet appareil. Exporte-les pour garder une copie ou les passer sur un autre téléphone.</p>
-  <div class="row"><button class="ghost" data-act="export" style="flex:1">Exporter</button><button class="ghost" data-act="import" style="flex:1">Importer</button></div>
+  <p class="sub">Tes données restent sur cet appareil. <b>Exporter</b> crée un fichier data.json (paires et photos). Remplace le data.json de ton dépôt GitHub par ce fichier, puis sur un autre téléphone appuie sur <b>Recharger depuis data.json</b>.</p>
+  <div class="row"><button class="ghost" data-act="export" style="flex:1">Exporter</button><button class="ghost" data-act="import" style="flex:1">Importer un fichier</button></div>
+  <button class="ghost" data-act="reload" style="width:100%;margin-top:8px">Recharger depuis data.json</button>
   <input type="file" id="imp" accept="application/json" hidden>`;
 }
 
@@ -213,18 +139,19 @@ let draft=null;
 function openForm(id,bag){
   const s=id?S.shoes.find(x=>x.id===id):null;
   if(!s&&!S.bags.length){alert("Crée d’abord un sac dans l’onglet Sacs.");return}
-  draft=s?{...s,colors:[...s.colors]}:{id:null,name:'',brand:S.brands[0]||'',colors:[],bag:bag??[...S.bags].sort((a,b)=>a-b)[0],photo:''};
+  draft=s?{...s,colors:[...s.colors]}:{id:null,name:'',brand:S.brands[0]||'',colors:[],bag:bag??sortBags(S.bags)[0],photo:''};
   drawForm(!!s);
 }
 function drawForm(edit){
-  const bags=[...S.bags].sort((a,b)=>a-b);
+  const bags=sortBags(S.bags);
   $('#modal').innerHTML=`<div class="modal" data-act="shade"><div class="sheet">
   <h1>${edit?'Modifier la paire':'Nouvelle paire'}</h1>
   <label for="f-name">Nom ou modèle</label><input id="f-name" value="${esc(draft.name)}" placeholder="Ex. Air Max 90">
   <label for="f-brand">Marque</label><select id="f-brand">${S.brands.map(b=>`<option ${draft.brand===b?'selected':''}>${esc(b)}</option>`).join('')}</select>
   <label>Couleurs</label><div class="chips">${Object.keys(COLORS).map(c=>`<span class="chip ${draft.colors.includes(c)?'on':''}" data-act="tcol" data-v="${c}"><i class="dot" style="background:${COLORS[c]}"></i>${c}</span>`).join('')}</div>
-  <label for="f-bag">Sac</label><select id="f-bag">${bags.map(b=>`<option ${draft.bag===b?'selected':''}>${b}</option>`).join('')}</select>
+  <label for="f-bag">Sac</label><select id="f-bag">${bags.map(b=>`<option value="${esc(b)}" ${draft.bag===b?'selected':''}>${esc(bagLabel(b))}</option>`).join('')}</select>
   <label for="f-photo">Photo</label><input id="f-photo" type="file" accept="image/*">
+  <button class="ghost" data-act="imgsearch" style="width:100%;margin-top:8px">Chercher des photos de cette paire</button>
   ${draft.photo?`<img class="prev" src="${draft.photo}" alt="Aperçu"><button class="ghost" data-act="rmphoto" style="margin-top:6px">Retirer la photo</button>`:''}
   <div class="row" style="margin-top:18px"><button data-act="saveshoe" style="flex:1">Enregistrer</button><button class="ghost" data-act="close">Annuler</button></div>
   ${edit?'<button class="danger" data-act="delshoe" style="width:100%;margin-top:10px">Supprimer cette paire</button>':''}
@@ -232,7 +159,7 @@ function drawForm(edit){
 }
 function keepFields(){
   const n=$('#f-name');if(!n)return;
-  draft.name=n.value;draft.brand=$('#f-brand').value;draft.bag=Number($('#f-bag').value);
+  draft.name=n.value;draft.brand=$('#f-brand').value;draft.bag=parseBag($('#f-bag').value);
 }
 function resize(file){
   return new Promise((res,rej)=>{
@@ -263,17 +190,17 @@ document.addEventListener('click',async e=>{
   }
   else if(act==='delshoe'){if(confirm('Supprimer la paire « '+draft.name+' » ?')){S.shoes=S.shoes.filter(s=>s.id!==draft.id);await save();closeModal();render()}}
   else if(act==='newbag'){
-    const next=S.bags.length?Math.max(...S.bags)+1:1;
-    const n=Number(prompt('Numéro du sac',next));
-    if(!n||n<1||!Number.isInteger(n))return;
-    if(S.bags.includes(n)){alert('Le sac '+n+' existe déjà.');return}
+    const nums=S.bags.filter(b=>typeof b==='number'),next=nums.length?Math.max(...nums)+1:1;
+    const raw=prompt('Numéro du sac, ou nom d’un lot (ex. Sortie)',next);if(raw===null||!raw.trim())return;const n=parseBag(raw.trim());
+    if(typeof n==='number'&&n<1)return;
+    if(S.bags.some(b=>norm(b)===norm(n))){alert('« '+bagLabel(n)+' » existe déjà.');return}
     S.bags.push(n);await save();render();
   }
-  else if(act==='openbag'){ui.bag=Number(v);render();scrollTo(0,0)}
+  else if(act==='openbag'){ui.bag=parseBag(v);render();scrollTo(0,0)}
   else if(act==='closebag'){ui.bag=null;render()}
   else if(act==='delbag'){
     const c=S.shoes.filter(s=>s.bag===ui.bag).length;
-    if(confirm('Supprimer le sac '+ui.bag+(c?' et ses '+c+' paire(s)':'')+' ?')){S.shoes=S.shoes.filter(s=>s.bag!==ui.bag);S.bags=S.bags.filter(b=>b!==ui.bag);ui.bag=null;await save();render()}
+    if(confirm('Supprimer « '+bagLabel(ui.bag)+' »'+(c?' et ses '+c+' paire(s)':'')+' ?')){S.shoes=S.shoes.filter(s=>s.bag!==ui.bag);S.bags=S.bags.filter(b=>b!==ui.bag);ui.bag=null;await save();render()}
   }
   else if(act==='addbrand'){
     const n=$('#nb').value.trim();if(!n)return;
@@ -287,9 +214,18 @@ document.addEventListener('click',async e=>{
   }
   else if(act==='export'){
     const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));
-    a.download='sneakers-sauvegarde.json';a.click();
+    a.download='data.json';a.click();
   }
   else if(act==='import')$('#imp').click();
+  else if(act==='reload'){
+    if(!confirm('Remplacer les données de ce téléphone par celles du fichier data.json en ligne ?'))return;
+    try{S=await fromFile();await save();render()}catch(x){alert('data.json introuvable ou invalide. Vérifie la connexion et que le fichier est dans le dépôt.')}
+  }
+  else if(act==='imgsearch'){
+    keepFields();
+    if(!draft.name.trim()){alert("Saisis d’abord le nom ou le code de la paire.");return}
+    window.open('https://www.google.com/search?tbm=isch&q='+encodeURIComponent(draft.name.trim()+' '+draft.brand),'_blank');
+  }
 });
 document.addEventListener('input',e=>{
   if(e.target.id==='q'){ui.q=e.target.value;const p=e.target.selectionStart;render();const q=$('#q');q.focus();q.setSelectionRange(p,p)}
